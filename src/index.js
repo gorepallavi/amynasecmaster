@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {HashRouter as  Routes, Route, HashRouter } from 'react-router-dom';
 import App from './App';
 import Service from './Service';
 import Blogs from './Blogs';
@@ -19,7 +19,7 @@ import Api from './Api';
 import Contact from'./Contact';
 
 ReactDOM.render(
-  <Router basename="/<amynasecmaster>">
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Service />} />
@@ -38,6 +38,6 @@ ReactDOM.render(
       <Route path="/Api" element={<Api />} />
       <Route path="/Contact" element={<Contact />} />
     </Routes>
-  </Router>,
+  </HashRouter>,
   document.getElementById('root')
 );
