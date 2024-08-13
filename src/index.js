@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as  Routes, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Service from './Service';
 import Blogs from './Blogs';
@@ -16,10 +16,10 @@ import Wast from './Wast';
 import Mast from './Mast';
 import Redteaming from './Redteaming';
 import Api from './Api';
-import Contact from'./Contact';
+import Contact from './Contact';
 
 ReactDOM.render(
-  <HashRouter>
+  <Router basename={process.env.PUBLIC_URL}>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Service />} />
@@ -38,6 +38,6 @@ ReactDOM.render(
       <Route path="/Api" element={<Api />} />
       <Route path="/Contact" element={<Contact />} />
     </Routes>
-  </HashRouter>,
+  </Router>,
   document.getElementById('root')
 );
