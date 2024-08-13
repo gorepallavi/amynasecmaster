@@ -1,0 +1,149 @@
+/*--------------------------------------------------------------
+# Blogs Section
+--------------------------------------------------------------*/
+.blogs {
+    --background-color: #F6F5F2;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    width: 100%;
+    margin-top: 150px !important
+  }
+  
+  .blogs .container {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .blogs h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .blogs h2 .accent {
+    color: var(--conrast-color);
+  }
+  
+  .blogs p {
+    color: color-mix(in srgb, #000000, transparent 40%);
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  
+  .blogs .btn-get-started {
+    color: var(--contrast-color);
+    background: var(--accent-color);
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 50px;
+    transition: 0.3s;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    background-color: color-mix(in srgb, var(--default-color), transparent 90%);
+  }
+  
+  .blogs .btn-get-started:hover {
+    border-color: color-mix(in srgb, var(--default-color), transparent 60%);
+  }
+  
+  .blogs .btn-watch-video {
+    font-size: 16px;
+    transition: 0.5s;
+    margin-left: 25px;
+    font-weight: 600;
+    color: var(--default-color);
+  }
+  
+  .blogs .btn-watch-video i {
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    font-size: 32px;
+    transition: 0.3s;
+    line-height: 0;
+    margin-right: 8px;
+  }
+  
+  .blogs .btn-watch-video:hover i {
+    color: var(--default-color);
+  }
+  
+  @media (max-width: 640px) {
+    .blogs h2 {
+      font-size: 36px;
+    }
+  
+    .blogs .btn-get-started,
+    .blogs .btn-watch-video {
+      font-size: 14px;
+    }
+  }
+  
+  .blogs .icon-boxes {
+    padding-bottom: 60px;
+    z-index: 4;
+  }
+  
+  @media (min-width: 1200px) {
+    .blogs .icon-boxes:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(50% + 20px);
+      background-color: var(--contrast-color);
+      border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    }
+  }
+  
+  .blogs .icon-box {
+    padding: 60px 30px;
+    position: relative;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--accent-color), white 4%);
+    box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .blogs .icon-box .title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .blogs .icon-box .title a {
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    transition: 0.3s;
+  }
+  
+  .blogs .icon-box .icon {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    font-size: 48px;
+    line-height: 1;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+  }
+  
+  .blogs .icon-box:hover {
+    background-color: color-mix(in srgb, var(--accent-color), white 10%);
+  }
+  
+  .blogs .icon-box:hover .title a,
+  .blogs .icon-box:hover .icon {
+    color: var(--contrast-color);
+  }
+  
+
+
+
+
+.bsb-hover-pull{transform:scaleX(1);transform-style:preserve-3d;transition:all .5s}.bsb-hover-pull:hover{transform:scale3d(1.02,1.02,1.02)}.bsb-hover-push{transform:scaleX(1);transform-style:preserve-3d;transition:all .5s}.bsb-hover-push:hover{transform:scale3d(.98,.98,.98)}.bsb-hover-image .bsb-scale{--bsb-scale:1}.bsb-hover-image .bsb-scale,.bsb-hover-image .bsb-scale-up{transform:scale3d(var(--bsb-scale),var(--bsb-scale),var(--bsb-scale));transform-style:preserve-3d;transition:transform .5s}.bsb-hover-image .bsb-scale-up{--bsb-scale:1.2}.bsb-hover-image:hover .bsb-hover-scale{--bsb-scale-hover:1}.bsb-hover-image:hover .bsb-hover-scale,.bsb-hover-image:hover .bsb-hover-scale-up{transform:scale3d(var(--bsb-scale-hover),var(--bsb-scale-hover),var(--bsb-scale-hover))}.bsb-hover-image:hover .bsb-hover-scale-up{--bsb-scale-hover:1.2}

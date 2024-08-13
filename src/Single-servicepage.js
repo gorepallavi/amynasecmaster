@@ -1,0 +1,219 @@
+import React, { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
+
+import logoimage from './asset/img/logo_black.png';
+// import footerimg from './assets/img/logo.png';
+
+function Singleservicepage() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+
+    // Initialize PureCounter after the component mounts
+    if (window.PureCounter) {
+      new window.PureCounter();
+    }
+  }, []);
+  
+  return (
+    <>
+      <header id="header" className="header fixed-top">
+
+<div className="topbar d-flex align-items-center">
+  <div className="container d-flex justify-content-center justify-content-md-between">
+    <div className="contact-info d-flex align-items-center">
+      <i className="bi bi-envelope d-flex align-items-center"><a href="mailto:info@amynasec.io">info@amynasec.io</a></i>
+      <i className="bi bi-phone d-flex align-items-center ms-4"><span>+91</span></i>
+    </div>
+    <div className="social-links d-none d-md-flex align-items-center">
+      <a href="https://twitter.com/AmynaSec" className="twitter"><i className="bi bi-twitter-x"></i></a>
+      <a href="https://www.facebook.com/people/AmynaSec/100057171982099/" className="facebook"><i className="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/amynasec.labs?igsh=MWd3dHVnMHp4M21xbA==" className="instagram"><i className="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/amynasec-labs/mycompany/" className="linkedin"><i className="bi bi-linkedin"></i></a>
+    </div>
+  </div>
+</div>
+ {/* End Top Bar */}
+
+<div className="branding d-flex align-items-cente">
+
+  <div className="container position-relative d-flex align-items-center justify-content-between">
+    <a href="index.html" className="logo d-flex align-items-center">
+      {/* Uncomment the line below if you also wish to use an image logo  */}
+       {/* <img src="assets/img/logo.png" alt="">  */}
+      <a className="navbar-brand" href="#/">
+        <img src={logoimage} width="180" height="80" alt=""/>
+      </a>
+      <span>.</span>
+    </a>
+
+   
+    <nav id="navmenu" className="navmenu">
+      <ul>
+        <li><a href="/" className="">Home</a></li>
+        <li ><a href="./services"><span>Services</span></a> </li>
+        <li ><a href="./Blogs"><span>Blogs</span></a></li>
+         {/* <li><a href="#team">Careers</a></li> */}
+        <li className="dropdown"><a href="#/"><span>Media</span><i className="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="./Events">Events</a></li>
+            <li><a href="./conference-Talks">Conferance Talks</a></li>
+          </ul>
+        </li>
+
+        <li><a href="./Training">Training</a></li>
+        <li><a href="./Community">Community</a></li>
+        <li><a href="./About">About US</a></li>
+      </ul>
+      <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+  </div>
+
+</div>
+
+</header>
+
+      <main className="main">
+        <div className="page-title" data-aos="fade">
+          <div className="heading">
+            <div className="container">
+              <div className="row d-flex justify-content-center text-center">
+                <div className="col-lg-8">
+                  <h1>Services Details</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav className="breadcrumbs">
+            <div className="container">
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li className="current">Services Details</li>
+              </ol>
+            </div>
+          </nav>
+        </div>
+
+        <section id="service-details" className="service-details section">
+          <div className="container">
+            <div className="row gy-5">
+              <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div className="service-box">
+                  <h4>Services List</h4>
+                  <div className="services-list">
+                    <a href="#/" className="active"><i className="bi bi-arrow-right-circle"></i><span>Automotive Security Assessment</span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>IOT Security Assessment</span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>Information Security Assessment</span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>Web Application Security Testing</span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>Mobile Application Security Testing </span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>Red Teaming Assessment </span></a>
+                    <a href="#/"><i className="bi bi-arrow-right-circle"></i><span>API Security</span></a>
+                  </div>
+                </div>
+
+                <div className="service-box">
+                  <h4>Download Catalog</h4>
+                  <div className="download-catalog">
+                    <a href="#/"><i className="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
+                    <a href="#/"><i className="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+                <h1>Automotive Security Assessment</h1>
+                <img src="https://via.placeholder.com/800x400" alt="" className="img-fluid services-img"/>
+
+                <p>
+                  Every day in our life transportation has become essential for traveling from one place to another, whether it's a long or short distance. Have we ever thought about the security risks behind those vehicles?
+
+                  Have you ever considered how much risk we are exposed to while traveling? Vehicles provide connectivity, which offers many benefits but also associated risks.
+                </p>
+
+                <ul>
+                  <li><i className="bi bi-check-circle"></i> <span>Perform Cyber security functional tests</span></li>
+                  <li><i className="bi bi-check-circle"></i> <span>Perform Fault injection, side channel attacks</span></li>
+                  <li><i className="bi bi-check-circle"></i> <span>Cyber security Trainings</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="footer" className="footer fixed-bottom">
+
+    <div className="container footer-top">
+      <div className="row gy-4">
+        <div className="col-lg-3 col-md-12 footer-about">
+          <a className="navbar-brand" href="#/">
+            <img src={logoimage} width="180" height="80" alt=""/>
+          </a>
+          
+          
+          <div className="social-links d-flex mt-4">
+            <a href="https://twitter.com/AmynaSec"><i className="bi bi-twitter-x"></i></a>
+            <a href="https://www.facebook.com/people/AmynaSec/100057171982099/"><i className="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/amynasec.labs?igsh=MWd3dHVnMHp4M21xbA==" className="instagram"><i className="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/amynasec-labs/mycompany/" className="linkedin"><i className="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-6 footer-links">
+          <h4>Service</h4>
+          <ul>
+            <li><a href="/Single-servicepage">Automotive Security Assessment</a></li>
+            <li><a href="/IOT Security Assesment">IOT Security Assessment</a></li>
+            <li><a href="/Information Security Assesment">Information Security Assessment</a></li>
+            <li><a href="/Wast"> Web Application Security Testing  </a></li>
+            <li><a href="/Mast">Mobile Application Security Testing  </a></li>
+            <li><a href="/Redteaming"> Red Teaming Assessment  </a></li>
+            <li><a href="/Api"> API Security Testing  </a></li>
+            
+          </ul>
+        </div>
+
+        <div className="col-lg-2 col-6 footer-links">
+          <h4>Quick link</h4>
+          <ul>
+            <li><a href="./services">Services</a></li>
+            <li><a href="./conference-Talks">Conferance Talks</a></li>
+            <li><a href="./Training">Training</a></li>
+            <li><a href="./Blogs">Blogs</a></li>
+            <li><a href="./Community">Community</a></li>
+          </ul>
+        </div>
+
+
+        <div className="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+      <h4>Contact Us</h4>
+      <p>Amynasec Labs, Park Plaza, 6th
+    floor,17th Dhanori Road, Dhanori,
+    Pune,Maharashtra 411015,India.</p>
+      
+      <p className="mt-4"><strong>Phone:</strong> <span>+91</span></p>
+      <p><strong>Email:</strong> <span>info@amynasec.io</span></p>
+    </div>
+
+      </div>
+    </div>
+
+    <div className="container copyright text-center mt-4">
+      <p> <span></span> <strong className="px-1 sitename"></strong> <span></span></p>
+      <div className="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <a href="#/" id="scroll-top" className="scroll-top d-flex align-items-center justify-content-center"><i className="bi bi-arrow-up-short"></i></a>
+      </div>
+    </div>
+ {/* Scroll Top  */}
+
+
+  </footer>
+    </>
+  );
+}
+
+export default Singleservicepage;
