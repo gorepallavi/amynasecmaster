@@ -19,24 +19,24 @@ import Api from './Api';
 import Contact from './Contact';
 
 ReactDOM.render(
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router basename="/amynasecmaster">
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Service />} />
-      <Route path="/Blogs" element={<Blogs />} />
+      <Route path="/blogs" element={<Blogs />} />
       <Route path="/events" element={<Event />} />
-      <Route path="/conference-Talks" element={<Conferancetalks />} />
-      <Route path="/Training" element={<Training />} />
-      <Route path="/Community" element={<Community />} />
-      <Route path="/About" element={<About />} />
-      <Route path="/Single-servicepage" element={<Singleservicepage />} />
-      <Route path="/IOT Security Assesment" element={<IOTsecurity />} />
-      <Route path="/Information Security Assesment" element={<InformationSecurity />} />
-      <Route path="/Wast" element={<Wast />} />
-      <Route path="/Mast" element={<Mast />} />
-      <Route path="/Redteaming" element={<Redteaming />} />
-      <Route path="/Api" element={<Api />} />
-      <Route path="/Contact" element={<Contact />} />
+      <Route path="/conference-talks" element={<Conferancetalks />} />
+      <Route path="/training" element={<Training />} />
+      <Route path="/community" element={<Community />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/single-servicepage" element={<Singleservicepage />} />
+      <Route path="/iot-security-assessment" element={<IOTsecurity />} />
+      <Route path="/information-security-assessment" element={<InformationSecurity />} />
+      <Route path="/wast" element={<Wast />} />
+      <Route path="/mast" element={<Mast />} />
+      <Route path="/redteaming" element={<Redteaming />} />
+      <Route path="/api" element={<Api />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   </Router>,
   document.getElementById('root')
