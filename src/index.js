@@ -19,7 +19,7 @@ import Api from './Api';
 import Contact from './Contact';
 
 ReactDOM.render(
-  <Router basename="/amynasecmaster">
+  <Router basename={process.env.PUBLIC_URL}>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Service />} />
