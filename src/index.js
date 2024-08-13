@@ -6,7 +6,7 @@ import Service from './Service';
 import Blogs from './Blogs';
 import Event from './Event';
 import Conferancetalks from './Conferancetalks';
-import Training from'./Training';
+import Training from './Training';
 import Community from './Community';
 import About from './About';
 import Singleservicepage from './Single-servicepage';
@@ -18,10 +18,8 @@ import Redteaming from './Redteaming';
 import Api from './Api';
 import Contact from'./Contact';
 
-
-
 ReactDOM.render(
-  <Router>
+  <Router basename="/<amynasecmaster>">
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Service />} />
@@ -39,9 +37,6 @@ ReactDOM.render(
       <Route path="/Redteaming" element={<Redteaming />} />
       <Route path="/Api" element={<Api />} />
       <Route path="/Contact" element={<Contact />} />
-      
-
-
     </Routes>
   </Router>,
   document.getElementById('root')
