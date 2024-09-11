@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Chart Visualization</title>
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <h2>Radar Chart Visualization</h2>
+    <canvas id="myRadarChart" width="800" height="400"></canvas>
+
+<script>
+    const ctx = document.getElementById('myRadarChart').getContext('2d');
+    const radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Metric 1', 'Metric 2', 'Metric 3', 'Metric 4'],
+            datasets: [{
+                label: 'Data Set 1',
+                data: [20, 30, 40, 50],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: '#36A2EB',
+                borderWidth: 2
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

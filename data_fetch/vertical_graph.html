@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Bar Chart with Data Count</title>
+    <!-- Load Chart.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Vertical Bar Chart with Data Count</h2>
+    <canvas id="myBarChart" width="800" height="400"></canvas>
+
+    <script>
+        let chart;
+
+        function fetchDataAndUpdateChart() {
+            fetch('http://127.0.0.1:5000/get_data')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data fetched:', data);
+
+                    const dataCounts = {};
+
+                    // Group the data by category (e.g., 'Data' field) and count occurrences
+                    data.forEach(item => {
+                        const label = item.Data;  // Assuming 'Data' contains categories
+                        if (dataCounts[label]) {
+                            dataCounts[label]++;
+                        } else {
+                            dataCounts[label] = 1;
+                        }
+                    });
+
+                    const labels = Object.keys(dataCounts);  // Categories for x-axis
+                    const values = Object.values(dataCounts); // Data counts for y-axis
+
+                    console.log('Labels:', labels);
+                    console.log('Values:', values);
+
+                    if (chart) {
+                        chart.data.labels = labels;
+                        chart.data.datasets[0].data = values;
+                        chart.update();
+                    } else {
+                        const ctx = document.getElementById('myBarChart').getContext('2d');
+                        chart = new Chart(ctx, {
+                            type: 'bar',  // Bar chart type for vertical bars
+                            data: {
+                                labels: labels,  // x-axis labels (categories)
+                                datasets: [{
+                                    label: 'Data Count',
+                                    data: values,  // y-axis data points (counts)
+                                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    x: {  // Categories on the x-axis
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Source Data (Categories)'
+                                        }
+                                    },
+                                    y: {  // Data counts on the y-axis
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Data Count'
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                const label = context.dataset.label || '';
+                                                const value = context.raw;
+                                                return `${label}: ${value}`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        fetchDataAndUpdateChart();
+    </script>
+</body>
+</html>
+

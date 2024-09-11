@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered Bar Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Clustered Bar Chart Visualization</h2>
+    <canvas id="myClusteredBarChart" width="800" height="400"></canvas>
+
+    <script>
+        let clusteredBarChart;
+
+        function fetchDataAndUpdateClusteredBarChart() {
+            fetch('http://127.0.0.1:5000/get_data')
+                .then(response => response.json())
+                .then(data => {
+                    const dataCounts = {};
+
+                    data.forEach(item => {
+                        const label = item.Module; // Group by 'Module' field
+                        const category = item.Type; // Differentiate by 'Type' field
+                        if (!dataCounts[label]) {
+                            dataCounts[label] = {};
+                        }
+                        if (dataCounts[label][category]) {
+                            dataCounts[label][category]++;
+                        } else {
+                            dataCounts[label][category] = 1;
+                        }
+                    });
+
+                    const labels = Object.keys(dataCounts);
+                    const categories = Array.from(new Set(Object.values(data).map(item => item.Type)));
+
+                    const datasets = categories.map((category, index) => {
+                        return {
+                            label: category,
+                            data: labels.map(label => dataCounts[label][category] || 0),
+                            backgroundColor: `rgba(${(index * 100) % 255}, ${(index * 50) % 255}, ${(index * 150) % 255}, 0.5)`,
+                            borderColor: `rgba(${(index * 100) % 255}, ${(index * 50) % 255}, ${(index * 150) % 255}, 1)`,
+                            borderWidth: 1
+                        };
+                    });
+
+                    if (clusteredBarChart) {
+                        clusteredBarChart.data.labels = labels;
+                        clusteredBarChart.data.datasets = datasets;
+                        clusteredBarChart.update();
+                    } else {
+                        const ctx = document.getElementById('myClusteredBarChart').getContext('2d');
+                        clusteredBarChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: datasets
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    x: { 
+                                        stacked: true,
+                                        beginAtZero: true 
+                                    },
+                                    y: { 
+                                        stacked: true,
+                                        beginAtZero: true 
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        fetchDataAndUpdateClusteredBarChart();
+    </script>
+</body>
+</html>

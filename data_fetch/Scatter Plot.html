@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plot Visualization</title>
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <h2>Scatter Plot Visualization</h2>
+    <canvas id="myScatterChart" width="800" height="400"></canvas>
+
+    <script>
+        const ctx = document.getElementById('myScatterChart').getContext('2d');
+        const scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Scatter Dataset',
+                    data: [
+                        {x: 10, y: 20},
+                        {x: 15, y: 25},
+                        {x: 20, y: 30},
+                        {x: 25, y: 35}
+                    ],
+                    backgroundColor: '#FF6384'
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+    
+
+</body>
+</html>

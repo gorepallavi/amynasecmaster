@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Chart Visualization</title>
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <h2>Bubble Chart Visualization</h2>
+    <canvas id="myBubbleChart" width="800" height="400"></canvas>
+
+    <script>
+        const ctx = document.getElementById('myBubbleChart').getContext('2d');
+        const bubbleChart = new Chart(ctx, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Bubble Dataset',
+                    data: [
+                        {x: 10, y: 20, r: 10},
+                        {x: 15, y: 25, r: 15},
+                        {x: 20, y: 30, r: 20}
+                    ],
+                    backgroundColor: '#36A2EB'
+                }]
+            }
+        });
+    </script>
+    
+
+</body>
+</html>

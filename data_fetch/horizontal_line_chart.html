@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Line Chart Visualization</title>
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <h2>Horizontal Line Chart Visualization</h2>
+    <canvas id="myHorizontalLineChart" width="800" height="400"></canvas>
+
+    <script>
+        let chart;
+
+        function fetchDataAndUpdateChart() {
+            fetch('http://127.0.0.1:5000/get_data')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data fetched:', data);
+
+                    const dataCounts = {};
+
+                    data.forEach(item => {
+                        const label = item.Data;
+                        if (dataCounts[label]) {
+                            dataCounts[label]++;
+                        } else {
+                            dataCounts[label] = 1;
+                        }
+                    });
+
+                    const labels = Object.keys(dataCounts);  // This will be shown on the y-axis
+                    const values = Object.values(dataCounts); // This will be shown on the x-axis
+
+                    console.log('Labels:', labels);
+                    console.log('Values:', values);
+
+                    if (chart) {
+                        chart.data.labels = labels;
+                        chart.data.datasets[0].data = values;
+                        chart.update();
+                    } else {
+                        const ctx = document.getElementById('myHorizontalLineChart').getContext('2d');
+                        chart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: labels, // The labels will appear on the y-axis
+                                datasets: [{
+                                    label: 'Data Count',
+                                    data: values,  // Values will appear on the x-axis
+                                    borderColor: '#36a2eb',
+                                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                    borderWidth: 2,
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                indexAxis: 'y', // Swap x and y axes
+                                scales: {
+                                    x: {  // x-axis for the horizontal direction
+                                        beginAtZero: true
+                                    },
+                                    y: {  // y-axis for the categories (Data field)
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                const label = context.dataset.label || '';
+                                                const value = context.raw;
+                                                return `${label}: ${value}`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        fetchDataAndUpdateChart();
+    </script>
+</body>
+</html>

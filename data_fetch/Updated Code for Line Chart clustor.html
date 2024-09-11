@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered Line Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Clustered Line Chart Visualization</h2>
+    <canvas id="myLineChart" width="800" height="400"></canvas>
+
+    <script>
+        let lineChart;
+
+        function fetchDataAndUpdateLineChart() {
+            fetch('http://127.0.0.1:5000/get_data')
+                .then(response => response.json())
+                .then(data => {
+                    const dataCounts = {};
+
+                    data.forEach(item => {
+                        const label = item.Module; // Group by 'Module' field
+                        const category = item.Type; // Differentiate by 'Type' field
+                        if (!dataCounts[label]) {
+                            dataCounts[label] = {};
+                        }
+                        if (dataCounts[label][category]) {
+                            dataCounts[label][category]++;
+                        } else {
+                            dataCounts[label][category] = 1;
+                        }
+                    });
+
+                    const labels = Object.keys(dataCounts);
+                    const categories = Array.from(new Set(data.map(item => item.Type)));
+
+                    const datasets = categories.map((category, index) => {
+                        return {
+                            label: category,
+                            data: labels.map(label => dataCounts[label][category] || 0),
+                            borderColor: `rgba(${(index * 100) % 255}, ${(index * 50) % 255}, ${(index * 150) % 255}, 1)`,
+                            backgroundColor: `rgba(${(index * 100) % 255}, ${(index * 50) % 255}, ${(index * 150) % 255}, 0.2)`,
+                            borderWidth: 2,
+                            fill: false
+                        };
+                    });
+
+                    if (lineChart) {
+                        lineChart.data.labels = labels;
+                        lineChart.data.datasets = datasets;
+                        lineChart.update();
+                    } else {
+                        const ctx = document.getElementById('myLineChart').getContext('2d');
+                        lineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: datasets
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    x: {
+                                        beginAtZero: true
+                                    },
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            stepSize: 250, // Set the interval between ticks
+                                            callback: function(value) {
+                                                // Optionally display only certain ticks
+                                                return value % 250 === 0 ? value : '';
+                                            }
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                const label = context.dataset.label || '';
+                                                const value = context.raw;
+                                                return `${label}: ${value}`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        fetchDataAndUpdateLineChart();
+    </script>
+</body>
+</html>

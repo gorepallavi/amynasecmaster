@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doughnut Chart Visualization</title>
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <h2>Doughnut Chart Visualization</h2>
+    <canvas id="myDoughnutChart" width="800" height="400"></canvas>
+
+<script>
+    const ctx = document.getElementById('myDoughnutChart').getContext('2d');
+    const doughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Category 1', 'Category 2', 'Category 3'],
+            datasets: [{
+                data: [10, 20, 30],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                hoverOffset: 4
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
